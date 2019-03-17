@@ -1,0 +1,198 @@
+{extend name="public/base" /}
+{block name="header"}{/block}
+{block name="footer"}{/block}
+{block name="menu"}{/block}
+{block name="seo"}
+<title>H+ 后台主题UI框架 - 基本表单</title>
+<meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+<meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+{/block}
+{block name="link"}
+<link rel="shortcut icon" href="favicon.ico"> <link href="__STATIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+<link href="__STATIC__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+<link href="__STATIC__/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/chosen/chosen.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/switchery/switchery.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+<link href="__STATIC__/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+<link href="__STATIC__/css/animate.min.css" rel="stylesheet">
+<link href="__STATIC__/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+{/block}
+</head>
+{block name="content"}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>寄件登记 </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <!--<ul class="dropdown-menu dropdown-user">-->
+                        <!--<li><a href="form_basic.html#">选项1</a>-->
+                        <!--</li>-->
+                        <!--<li><a href="form_basic.html#">选项2</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" class="form-horizontal" id="add-record">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">快递公司</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" name="Type" id="Type">
+                                    <option value="申通快递">申通快递</option>
+                                    <option value="天天快递">天天快递</option>
+                                    <option value="国通快递">国通快递</option>
+                                    <option value="百世汇通">百世汇通</option>
+                                    <option value="韵达快递">韵达快递</option>
+                                    <option value="中通快递">中通快递</option>
+                                    <option value="圆通快递">圆通快递</option>
+                                    <option value="宅急送">宅急送</option>
+                                    <option value="全峰快递">全峰快递</option>
+                                    <option value="优速快递">优速快递</option>
+                                    <option value="龙邦快递">龙邦快递</option>
+                                    <option value="万象快递">万象快递</option>
+                                    <option value="当当快递">当当快递</option>
+                                    <option value="天猫快递">天猫快递</option>
+                                    <option value="快捷快递">快捷快递</option>
+                                    <option value="唯品会">唯品会</option>
+                                    <option value="聚美优品">聚美优品</option>
+                                    <option value="安能">安能</option>
+                                    <option value="如风达">如风达</option>
+                                    <option value="邮政">邮政</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">快递单号</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="OrderNo" name="OrderNo">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">收件人姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Name" name="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话号码</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Tel" name="Tel">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">学校</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" name="School" id="School">
+                                    <option value="技师一职">技师一职</option>
+                                    <option value="第三中学">第三中学</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">蓝帝字眼</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" name="LandiTag" id="LandiTag">
+                                    <option value="有">有</option>
+                                    <option value="没有">没有</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">备注说明</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="" class="form-control input-lg m-b" id="BeiZhu" name="BeiZhu">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group" id="data_1">
+                            <label class="col-sm-2 control-label">收入日期</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input id="Date" name="Date" type="text" class="form-control" value="{:date('Y-m-d')}">
+                            </div>
+                        </div>
+
+                        <input type="hidden" value="{$Request.ip}" name="ClientIP">
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button  id="submit" type="button" class="btn btn-primary" >添加</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="js"}
+<script src="__STATIC__/js/jquery.min.js"></script>
+<script src="__STATIC__/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__STATIC__/js/content.min.js?v=1.0.0"></script>
+<script src="__STATIC__/js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $("#submit").on('click',function (event) {
+            $.ajax({
+                type:"POST",
+                url:"{:url('record/checkRecord')}",
+                data:$("#add-record").serialize(),
+                dataType:"json",
+                success:function (data) {
+                    if (data.status==1){
+                        alert(data.message);
+                    }else {
+                        alert(data.message);
+                    }
+                }
+            })
+        })
+    })
+
+</script>
+
+<script src="__STATIC__/js/plugins/chosen/chosen.jquery.js"></script>
+<script src="__STATIC__/js/plugins/jsKnob/jquery.knob.js"></script>
+<script src="__STATIC__/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+<script src="__STATIC__/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="__STATIC__/js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+<script src="__STATIC__/js/plugins/nouslider/jquery.nouislider.min.js"></script>
+<script src="__STATIC__/js/plugins/switchery/switchery.js"></script>
+<script src="__STATIC__/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+<script src="__STATIC__/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__STATIC__/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="__STATIC__/js/plugins/clockpicker/clockpicker.js"></script>
+<script src="__STATIC__/js/plugins/cropper/cropper.min.js"></script>
+<script src="__STATIC__/js/demo/form-advanced-demo.min.js"></script>
+
+
+
+
+
+{/block}

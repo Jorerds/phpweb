@@ -1,0 +1,9 @@
+<?php 
+/*
+|
+*/
+$pattern='/test|abc|AAA/';
+$str='efAAAewtestfweabcfwefAAAwe';
+var_dump(preg_match_all($pattern,$str,$arr));
+var_dump($arr);
+?>

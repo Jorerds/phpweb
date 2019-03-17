@@ -1,0 +1,130 @@
+<!--用标签引入公共摸版文件-->
+{include    file='basse/header' /}
+<table  border="1"  cellpadding="2" cellspacing="0" width="40%">
+    <caption style="font-size: 22px;font-weight: bold">员工信息表</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>工资</th>
+        <th>部门</th>
+    </tr>
+    <!--volist循环-->
+    {volist name="dataStaff" id="vo" key='k' empty="没有数据"}
+<!--    <tr>
+        <td>{$k}</td>
+        <td>{$vo.name}</td>
+        <td>{$vo.sex}</td>
+        <td>{$vo.salary}</td>
+        <td>{$vo.dept}</td>
+    </tr>-->
+    {/volist}
+    <!--foreach循环-->
+    {foreach name="dataStaff" item="fo"}
+    <tr>
+        <td>{$key}</td>
+        <td>{$fo.name}</td>
+        <td>{$fo.sex}</td>
+        <td>{$fo.salary}</td>
+        <td>{$fo.dept}</td>
+    </tr>
+    {/foreach}
+</table>
+
+<table  border="1"  cellpadding="2" cellspacing="0" width="40%">
+    <caption style="font-size: 22px;font-weight: bold">员工信息表(用for循环创建空表)</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>工资</th>
+        <th>部门</th>
+    </tr>
+    <!--for循环-->
+    {for start="0"  end="10" comparsion="lt" name="i"    step="1"}
+    <tr>
+        {for start="0"  end="5" comparsion="lt" name="j"    step="1"}
+            <td>{$j*10+$i}</td>
+        {/for}
+    </tr>
+    {/for}
+</table>
+
+<table  border="1"  cellpadding="2" cellspacing="0" width="40%">
+    <caption style="font-size: 22px;font-weight: bold">员工信息表（比较判断工资是否过万）</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>工资</th>
+        <th>部门</th>
+    </tr>
+    <!--volist循环-->
+    {volist name="dataStaff" id="vo" key='k' empty="没有数据"}
+        <tr>
+            <td>{$k}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.sex}</td>
+            {egt name="vo.salary" value="10000"}
+            <td>过万</td>
+            {else /}
+            <td>未过万</td>
+            {/egt}
+            <td>{$vo.dept}</td>
+        </tr>
+    {/volist}
+
+</table>
+
+<table  border="1"  cellpadding="2" cellspacing="0" width="40%">
+    <caption style="font-size: 22px;font-weight: bold">员工信息表（范围判断、多分支）</caption>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>工资</th>
+        <th>员工级别</th>
+        <th>部门</th>
+    </tr>
+    <!--volist循环-->
+    {volist name="dataStaff" id="vo" key='k' empty="没有数据"}
+    <tr>
+        <td>{$k}</td>
+        <td>{$vo.name}</td>
+        <td>{$vo.sex}</td>
+        <!--范围判断-->
+        {between name="vo.salary" value="1000,5000"}
+        <td>标准水平</td>
+        {else /}
+        <td style="color: red">中上水平</td>
+        {/between}
+        <!--多分支判断-->
+        {switch name="vo.level"}
+        {case value="1"}<td>普通</td>{/case}
+        {case value="2"}<td>中层</td>{/case}
+        {case value="3"}<td>高层</td>{/case}
+        {case value="4"}<td>顶层</td>{/case}
+        {/switch}
+        <td>{$vo.dept}</td>
+    </tr>
+    {/volist}
+
+</table>
+
+<h3>
+    <p>获取请求信息：</p><br>
+    <p>GET：<span>{$Request.get.name}</span></p>
+    <p>POST：<span>{$Request.post.sex}</span></p>
+    <p>param：<span>{$Request.param.user}</span></p><!--param方法能够获取所有的变量信息-->
+    <p>root：<span>{$Request.root.true}</span></p>
+    <p>host：<span>{$Request.host}</span></p>
+    <p>pathinfo：<span>{$Request.pathinfo}</span></p>
+    <p>path：<span>{$Request.path}</span></p>
+    <p>ext：<span>{$Request.ext}</span></p>
+    <p>ip：<span>{$Request.ip}</span></p>
+    <p>设定默认值<span>{$user | default=10}</span></p>
+    <p>根据GET传入员工id获取员工入职时间<span>{$Think.get.id | getTime | date='Y/m/d',### | default='1970/01/01'}</span></p>
+</h3>
+
+<!--用标签引入公共摸版文件-->
+{include file='basse/footer'    /}

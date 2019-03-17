@@ -1,0 +1,10 @@
+<?php
+/*
+元字符：?
+	匹配0次或1次其前面的字符
+	放在?前面的那个字符可以出现0次，或者1次
+*/
+$pattern='/te?st/';
+$str='abcteest';
+var_dump(preg_match_all($pattern,$str,$arr));
+var_dump($arr);

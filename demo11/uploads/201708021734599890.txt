@@ -1,0 +1,797 @@
+<?php
+	$a=5;
+	$b=6
+	if($a=$b){
+		echo "为真";
+	}else{
+		echo "为假";
+	}//双向语句
+
+	
+	
+		if(){
+			
+		}elseif(){
+			
+		}elseif(){
+			
+		}else{
+			
+		}//多向语句
+	
+	switch($a){
+		case 1: //case相当于==
+			echo '111'; break;
+		case 2:
+			echo '222'; break;
+		case 3:
+			echo '333'; break;
+		default:
+			echo '无法判断';
+	}
+	
+	 
+	function test($a,$b){
+		echo $a+$b+10;
+	}
+		test(5,5);
+
+	
+/* 局部变量*/
+	function test(){
+		$a=1; //局部变量$a只有在这个函数内部有效
+	}
+	echo $a;
+	
+	
+	
+/* 全局变量 */
+	$b=100;
+	function test1(){
+		global $b; //声明$b为全局变量，然后在这个函数内部就可以使用$b
+		echo $b;
+	}
+	test1();
+	
+	
+	
+	
+	define('c', 5); //定义一个常量
+
+	function but(){
+    
+		echo c+5;
+	}
+		but();
+	
+	
+	
+/*静态变量*/
+    function bug(){
+        static $a=10; //静态变量$a，初始化静态变量，仅在第一次调用的时候执行   
+        echo ++$a;
+    }
+        bug();
+        bug();
+		
+
+	
+/*
+ * 按值传递参数
+ */
+	function test($b){
+		echo --$b;
+	}
+	$c=100;
+	test($c); //对形式参数的操作，根本不影响到实际参数(变量)的值，两者相当于没有联系。
+	echo  '<br  />'.$c;
+	
+	
+	
+/*
+ * 按引用传递参数
+*/
+		function test(&$a){
+				echo ++$a;
+		}
+		$i=10;
+		test($i); //按引用传递参数，相当于形式参数和实际参数指的是同一个人，只是名字不一样，对形式参数的操作会直接影响实际参数（变量）
+		echo '<br />';
+		echo $i;
+		
+		
+		
+/*
+* 函数参数的默认值
+*/
+	/*    function test($a=10){//设定参数的默认值
+        echo ++$a;
+    }
+		test(100); */
+        function test($a=10,$b=15){ //设定参数的默认值必须从右往左加，右边必须有才能够给左边的加
+            echo $a;
+            echo '<br />';
+            echo $b;
+        }
+        test(20); 
+	
+	
+
+	
+		func_get_args() //获取数组
+		func_get_arg(1) //调用这个函数的时候可以传入一个值表示获取第几个实际参数（从0开始计算
+		func_num_args() //返回传入自定义函数的参数的个数
+/*
+ * 可变长度参数列表
+ */  
+    	func_get_args() //获取数组
+		func_get_arg(1) //调用这个函数的时候可以传入一个值表示获取第几个实际参数（从0开始计算
+		func_num_args() //返回传入自定义函数的参数的个数
+    
+	function test(){
+        //var_dump(func_get_args());  //获取数组
+        //var_dump(func_get_arg(1)); //调用这个函数的时候可以传入一个值表示获取第几个实际参数（从0开始计算）
+        //var_dump(func_num_args()); //返回传入自定义函数的参数的个数
+        
+    }
+        test(215,45,15,874,'holl,word');
+		
+		
+		
+/*
+* 可变函数（变量函数）
+*/
+		//直接把函数赋值给变量
+	   //不能用于例如 echo，print，unset()，isset()，empty()，include，require 以及类似的语言结构
+		function test(){
+			echo 'test';
+		}
+		$a='test'; //把函数名字加上引号，赋值给变量即可
+		$a(); //test();
+		
+
+/*
+ * 递归函数
+ */		
+		递归函数指在函数内部自己调用自己的函数。
+		function test($a){
+        echo $a.'&nbsp';
+        if($a>0){
+            test($a-1); //自己内部调用自己，即递归函数
+        }else {
+            echo 'null';
+        }
+        echo $a.'&nbsp';
+    }
+    test(3);
+
+		
+/*
+ * 数组
+ */
+ 
+//创建数组方法1：
+		$student[0]=10;        //索引数组
+		$student[1]='小明';
+		$student[2]='男';
+		$student[3]=68.4;
+
+//如果省略索引值，那么默认索引值为整型，并且从0开始（和方法1基本相同）
+		$studen[]=10;        //索引数组
+		$studen[]='小明';
+		$studen[]='男';
+		$studen[]=68.4; 
+////////////////////////////////////////////////////		
+	
+	$studen1['num']=9;      //关联数组
+    $studen1['name']='王思聪';
+    $studen1['sdw']=awsd;
+    $studen1['aid']=75.1;
+    var_dump($studen1);
+
+///////////////////////////////////////////////////////////
+ // 数组的形式2
+	   $student=array(20,'小红 ',seden,80.5);
+		
+		var_dump($student);
+		
+	//形式2的另外一种，能够自定义索引值
+	    $student1=array(
+              1=>50,
+              2=>'老王',
+              3=>sude,
+              5=>96.4
+    );     //索引数组
+	
+///////////////////////////////////
+		//关联数组
+	    $student2=array(
+        'Num'=>80,
+        'Name'=>'马云',
+        'Nsd'=>sude,
+        'Fsd'=>97.4
+    );    
+///////////////////////////////////////////////////////
+	
+
+	
+	//要取出数组的里面具体数据的方法
+	//数组变量名称[索引值];
+	
+	echo $student[2]; //输出数组$student里索引值为2的数据
+	
+	
+/*
+* 多维数组
+*/	 
+
+		//在数组中的数组
+	$students =array(
+           array(2,'比尔盖茨',Ber,65.4),
+           array(3,'布什',budsd,71.4),
+           array(5,'菲斯',Fs,85.4)
+    );
+    
+    $students2 =array(
+       1=> array(7,'比尔盖茨',Ber,65.4),
+       3=> array(10,'布什',budsd,71.4),
+       4=>array(6,'菲斯',Fs,85.4)
+    );
+    
+    
+    
+    
+    var_dump($students);
+    var_dump($students2);
+    
+    var_dump($students2[3]); //输出多维数组$students2中的索引为3中的数组数据
+    echo $students2[3][1];   //输出多维数组$students2中的索引为3中的数组中索引为1的具体数据
+    
+
+/*
+* 遍历数组:每个都经历一遍
+*/
+/////////////////////使用for循环可以遍历数组 for的并不是经常使用的因为他有缺点，就是不能遍历关联数组
+    /*
+     count(数组[,1])返回数组里面数据的个数，还可以获取多维数组的个数，当然一般我们只传一个数组进去就可以了
+     $arr1=array(
+            array(1,2,3),
+            array(4,5,6)
+     )
+     echo count($arr1,1); //数组$arr1一共有8个数据，因为除了$arr1[0]和$arr1[1]各有3个数据外，它们两个本身也是属于$arr1的两个数据
+     */
+    
+    $arr=array(
+        'a','b','c','d','e'
+);
+        echo '数组$arr一共有：'. count($arr).'条数据<br />'; //使用函数count统计数组$arr的数据个数
+        echo '其中有以下几条数据：<br />';
+        for($i=0;$i<count($arr);$i++){  //使用for循环可以输出$arr里面的数组
+           echo $arr[$i].'<br />'; 
+           
+  }
+ //////////////////////foreach来遍历数
+		 /*
+     foreach来遍历数组 //比较常用，因为是PHP专门为我们来遍历数组的
+     格式：   foreach(数组变量 as 变量1){
+                //每次循环执行的语句
+                 变量1代表正在经历的数据
+     }
+     */
+    
+    $arr=array(
+            'Name'=>'崔斯特',
+            'Nex'=>30
+    );
+        foreach ($arr as $value){
+            echo $value.'<br />';
+        }
+        echo '<br />';
+      ////////////////////////////  
+        $arr1=array(
+            'Name2'=>'卢锡安',
+            'Nex2'=>6300
+        );
+        foreach ($arr1 as $value1=>$value2){
+            echo $value1.'='.$value2.'<br />'; //如需要用到索引可使用这方法输出索引
+        }
+
+		
+/////////////////////////////多维数组遍历方法(有规律的多维数组) //遇到没有规律的请参考递归函数的思路
+		
+	/*
+     遍历多维数组可用foreach嵌套foreach的方法
+     格式：foreach(数组变量 as 变量1){
+                    foreach(变量1 as 变量2){
+                     //循环执行语句
+                    }
+                }
+    */
+        $arr=array(
+            array('a','b','c'),
+            array('d','e','f')
+        );
+        foreach ($arr as $val1){
+            foreach ($val1 as $val2){
+                echo $val2.'<br />';
+            }
+        }
+		
+		
+		
+////////////////////////////案例/////////////////////////////////////////////////////
+
+    $std=array(
+            array('王圣堂',1,true,84.1),
+            array('王朗',2,true,91.4),
+            array('韩红',3,false,45.5)
+    );
+    echo '<table border=10>';
+    foreach ($std as $val){ 
+        
+        if($val[2]===true){   //用if来处理true和false分别处理为男和女
+                $val[2]='男';
+        }else {
+                $val[2]='女';
+        }
+        
+        echo "<tr>
+                         <td>{$val[0]}</td>
+                         <td>{$val[1]}</td> 
+                         <td>{$val[2]}</td>  
+                         <td>{$val[3]}</td>
+                   </tr>";
+                            
+    }
+    
+    echo '</table>';
+	
+	
+	
+	
+	
+/////////////////////超全局变量/////////////////////////////////
+	
+	传递数据（提交数据）给服务器端主要两种方式
+	1、$_GET 方式
+		?参数名=参数值&参数名2=参数值2
+		比如：http:/localhost/dem2/index.php?参数名=参数值
+		在服务器端（请求的php文件这边）可以通过$_GET来获取到
+		$_GET 索引值为参数名，索引值对应的数据是参数值
+		
+	2、$POST 方式
+		比如表单post可能通过$_POST来传送过来
+		
+		
+	<?php		
+		/* var_dump($_POST);*/  //用POST来获取表单数据
+		
+		var_dump($_GET) //用GET用可以获取表单传输，但不安全
+		
+		
+	?>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="utf-8">
+	<title>预定义超全局数据变量</title>
+	</head>
+	<body>
+		<!--  <form method="post"> <!--用POST来获取表单数据
+			姓名：<input type="text" name='user' /><br />
+			性别：<input type="text" name='sex' /><br />   
+			<input type="submit" value='提交' />
+			</form>   -->
+			<form method="get">    <!-- 用GET来获取表单数据  -->
+					姓名：<input type="text" name='user' /><br />
+					性别：<input type="text" name='sex' /><br />
+					<input type="submit" value='提交' />
+			</form>
+			
+	</body>
+	</html>
+	
+///////////////////////////////处理数组的相关函数/////////////////////////
+
+		1. array_count_values 统计数组中所有的值的出现次数:
+				$Max=array(16,'老王','老李','老李');
+				print_r(array_count_values($Max)); //统计数组中所有的值的出现次数
+		
+		2. array_key_exists 检查键名是否存在于数组中:
+				$Nex=array(100,'老王');
+				if(array_key_exists(2, $Nex)){  //检查键名是否存在于数组中
+					echo '键存在<br />';
+				}else {
+					echo '键不存在';
+				}
+				
+		3. array_search:
+			 $ar=array(10,'你好','大佬',30);
+		     var_dump(array_search(30, $ar)); //在数组中搜索键值并返回他的键名 如果涉及数据类型的 var_dump(array_search('30', $ar,true))(其中'30'是一个字符串类型而数组中30是个整型 所以在后面加上true来验证是否存在)
+	
+		4. count 数组数据统计 :
+			 $ard=array(10,'你好','大佬',30);
+		     var_dump(count($ard));	 //统计数组中的数据
+		
+		5. in_array 数组搜索数:
+			  $vex=array('老王','老李',10,50，'Nxd');
+			  if(in_array('老', $vex)){  //在数组中搜索数据
+				  echo '找到';
+			  }else {
+				  echo '未找到';
+			  }
+				var_dump(in_array('nxd', $vex,true)); //加上true可以验证数据是否相等
+		
+		6. list 数组值赋值给变量:
+			$v1=array();
+			$v1=array('老王','小李','小明');
+			list($Laowang,$Xiaoli,$Xiaoming)=$v1;  //把数组中的值赋值给变量
+			echo $Laowang.'<br />';
+				
+				
+		7.数组的排序:
+			  $arrd=array(
+		      'laowang'=>80,
+		      'liming'=>100,
+		      'hanghon'=>94,
+			  'hanghan'=>75
+			  );
+			  asort($arrd);    //对数组按键值升序进行排序
+			 //arsort($arrd);  //对数组按键值降序进行排序
+			 //ksort($arrd);   //对数组按键名进行排序
+			 //krsort($arrd);  //对数组按键名逆向排序
+			  print_r($arrd);
+			  echo '<br />';
+			  print_r(array_reverse($arrd)); //以相反的元素顺序返回数组
+			  
+			  SORT_REGULAR - 默认。把每一项按常规顺序排列（Standard ASCII，不改变类型）
+			  SORT_NUMERIC - 把每一项作为数字来处理。
+			  SORT_STRING - 把每一项作为字符串来处理。
+			  SORT_LOCALE_STRING - 把每一项作为字符串来处理，基于当前区域设置（可通过 setlocale() 进行更改）。
+		
+		8.array_filter回调函数
+			 function adp($var){
+				 return ($var % 2 ==1);
+			 }
+			 function adp2($var){
+				 return($var%2==0);
+			 }
+			 $arrdd1=array('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5,'f'=>6,'g'=>7);
+			 $arrdd2=array(8,9,10,11,12);
+			 echo "adp: \n";
+			 print_r(array_filter($arrdd1,"adp"));  //把值传递到回调函数里面 如果是true，则把输入数组中的当前键值返回结果数组中，数组键名保持不变。
+			 echo "adp2: \n";
+			 print_r(array_filter($arrdd2,"adp2")); //把值传递到回调函数里面 如果是true，则把输入数组中的当前键值返回结果数组中，数组键名保持不变。
+		
+
+
+
+
+///////////////////////////////////////////字符串处理函数//////////////////////////////////////////////////////////
+		<!-- ---------------------------trim移除字符串函数--------------------------------------- -->
+				<?php 
+				   $de1='   卡莉斯塔   ';
+				   var_dump(trim($de1)); //trim移除字符串两侧的字符
+				   //var_dump(ltrim($de1));  //ltim移除字符串左侧的字符
+				   //var_dump(rtrim($de1));  //rtim移除字符串右侧的字符
+				   $sd='asdddwfwew';
+				   var_dump(trim($sd,'adf')); //后面加上条件可达到去除指定字符串(如果是用trim那么就是去除两边，其他同理)
+				?>
+		
+		<!-- -----------------------------------字符串转换函数------------------------------------------------- -->
+				<?php 
+				  $vd='hello word';
+				  $vd2='LODSW';
+				  echo strtoupper($vd).'<br />'; //将字符串转换为大写
+				  echo strtolower($vd2).'<br />';          //将字符串转换为小写
+				?>
+		
+		<!-- -----------------------------------字符串搜索函数------------------------------------------------- -->
+			  <?php 
+		      $ed='And slowly read,and dream of the soft look';
+		      echo substr_count($ed,'ad').'<br />'; 
+		      //substr_count(被查找的字符串,规定搜索的字符串,规定在字符串何处开始搜索,规定字符串搜索长度)
+		      // substr_count($ed,'s',2,3) 2是从字符串的第二位开始，3是从开始字符串到第三个结束
+		      
+		      echo strpos($ed, 'A'); //查找字符串首次出现位置(区分大小写)
+		      /*
+		       * stripos() - 查找字符串在另一字符串中第一次出现的位置（不区分大小写）
+                  strripos() - 查找字符串在另一字符串中最后一次出现的位置（不区分大小写）
+                  strpos()- 查找字符串在另一字符串中第一次出现的位置（区分大小写）
+                  strrpos() - 查找字符串在另一字符串中最后一次出现的位置（区分大小写）
+                    */
+		      echo '<br />';
+		      $sdd='t1sdwsdasa';
+		      if(strpos($sdd, 't')!==false){  //如果不加上!==false 那么无法正常判断
+		          echo '找到了<br />';
+		      }else {
+		          echo '未找到<br />';
+		      }
+		      
+		      echo strstr($sdd, 'd').'<br />'; /*查找字符串在另一字符串中的第一次出现（区分大小写）加上true的话会返回搜索字符串的前面的字符串*/
+		     ?>
+	<!--------------------------------------------字符串替换函数-----------------------------------------------------------  --> 
+			<?php      
+		      var_dump(str_replace('t', 'T',$sdd));  /*查找并替换字符串*/
+		      $ws='t1sdwsdasa';
+		      $vss=str_replace(array('t',1,'s'), array('T','一','S'), $ws,$count); /*可用数组的方法对多个字符串进行替换 加上$count可对字符串替换计数*/
+		      echo $count;
+		      var_dump($vss);
+		      echo '<br />';
+		      
+		      $ws1=array(              /*srt_replace也可以对一个字符串的数组进行字符串替换*/
+		          't1sdwsdasa',  
+		          'dswt1dassa',
+		          'swasasdst1'
+		      );
+		      var_dump($ws1);
+		      $we=str_replace(array('t',1,'s'), array('T','一','S'), $ws1);
+		      echo '<br />';
+		      var_dump($we);
+			?>
+	<!-- -------------------------------------------处理HTML标签函数------------------------------------------------- -->
+			 
+				    $arry=<<<HTML //<<<HTML是标识符（<<<START也可以使用）
+					<p style="color:red; font-size:24px">阿道夫萨德尔</p><br />
+					<div style="color:red; font-size:24px">所发生的粉色</div>
+				HTML;
+					echo strip_tags($arry,'<p><div>');  //处理HTML标签函数 
+				  
+					
+	<!-- -----------------------------------------------字符串截取函数----------------------------------------------------- -->				
+					$var='tsdddasdwds';
+					echo substr($var, 2); //字符串截取函数如果截取开始数为负数那么就从字符串后面开始计算
+					
+    
+    
+	<!-- ----------------------------------------字符串分隔函数------------------------------------------------------------ -->
+				<?php 
+				   $las='test0,test1,test1,test2';
+				   print_r(explode(',', $las,2));  //能把一个字符串分隔成为数组，在后面加上数字能设定分隔成多少个
+				   
+				   $las1='test';
+				   echo '<br />';
+				   var_dump(str_split($las1,2)); //把字符串转换成为数组，后面加上数字可限制每个数据的字段
+				?>		
+
+				
+				
+////////////////////////////////////////////////正则表达式//////////////////////////////////////////////////////////
+一、正则表达式语法规则
+		描述了一类字符串的特征，然后通过这个特征可以配合一些特定的函数，来完成对字符串更加复杂的一系列操作！ 
+		普通字符和特殊字符组成的一个字符串
+二、定界符
+	我们一般习惯使用正斜线"/"作为定界的字符,前后一致
+三、普通字符
+	
+一、正则表达式语法规则
+		描述了一类字符串的特征，然后通过这个特征可以配合一些特定的函数，来完成对字符串更加复杂的一系列操作！ 
+		普通字符和特殊字符组成的一个字符串
+二、定界符
+	我们一般习惯使用正斜线"/"作为定界的字符,前后一致
+三、普通字符
+四、元字符
+	\d	匹配任意一个十进制数字，等价于[0-9]
+	\D	匹配任意一个除十进制数字以外字符,等价于[^0-9]
+	\s	匹配任意一个空白字符,比如换页符、换行符、回车符、制表符、垂直制表符
+	\S	匹配除空白字符以外的任何一个字符
+	\w	匹配任意一个数字或字母或下划线
+	\W	匹配除数字、字母、下划线以外的任意一个字符
+	.	匹配除换行符以外的任意一个字符
+	
+	*	匹配0次、或1次、或多次其前面的字符
+	+	匹配1次或多次其前面的字符
+	?	匹配0次或1次其前面的字符
+	{n}	表示其前面字符恰好出现n次
+	{n,}	表示其前面字符出现不少于n次
+	{n,m}	表示其前面的字符至少出现n次，最多出现m次
+	
+	^或\A	匹配字符串开始位置
+	$或者\Z	匹配字符串的结束位置
+	
+	|	匹配两个或多个模式
+	
+	[]	匹配方括号中的任意一个字符
+	[^]	匹配除方括号中字符以外的任意一个字符
+	()	将括号中作为一个整体以便将其中的内容获取到
+五、模式修正符
+	常见模式修正符
+	i	在和模式进行匹配时不区分大小写
+	m	多行匹配，如果目标字符串 中没有"\n"字符, 或者模式中没有出现^或$, 设置这个修饰符不产生任何影响
+	s	如果设定了此修正符，那么.将匹配所有的字符包括换行符
+	U	禁止贪婪匹配		
+
+////////////////////////////////////////////日期与时间////////////////////////////////////////
+        <?php
+           date_default_timezone_set('Asia/Shanghai'); //date_default_timezone_set设置时区
+           $NowTime=time(); 
+           $Time=mktime(17,0,0,7,24,2017);  //取得一个日期的Unix时间戳
+           echo '当前时间戳：'.time();  //time()获取当前Unix时间戳 
+           echo '<br />';
+           echo '距离5点钟还剩'.(($Time-$NowTime)/60).'分钟'.'<br />';
+           echo '当前时间'.date('Y年-m月-d日 G:i:s').'<br />';  //自定义格式Unix时间戳为指定的时间格式
+           echo '当前Unix时间戳的微秒数：'.microtime(true);  //返回当前Unix时间戳的微秒数
+           
+        ?>
+		<!-- -------------------------------------------可用microtime计算程序运行秒数---------------------------------------------------------- -->
+		<?php 
+				date_default_timezone_set('Asia/Shanghai');
+				$kaishi=microtime(true);
+				for($i=0;$i<1000000;$i++){
+					
+				}
+				$jiesu=microtime(true);
+				echo 'for循环用了：'.round(($jiesu-$kaishi),4).'秒'; 
+
+		?>
+	
+/////////////////////////////////////////////生成并且处理图像////////////////////////////////////////////////////////
+	
+		<?php
+			/*
+			 * 创建验证码
+			*/
+			header('Content-type:image/jpeg');
+			$width=150;
+			$height=40;
+			$ef=array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','v','t','w','z'); //用数组存储验证码的字符串
+			$string='';
+			for($c=0;$c<5;$c++){
+				$string.=$ef[rand(0,count($ef)-1)]; //用循环来控制验证码字符串的输出
+			}
+			$img=imagecreatetruecolor($width, $height); //生成一张图片
+			$color_bg=imagecolorallocate($img, rand(180,255), rand(180,255),  rand(180,255));//随机的背景颜色
+			$color_di=imagecolorallocate($img, rand(0,150), rand(0,150), rand(0,150));//随机的像素点颜色
+			$color_huxi=imagecolorallocate($img, rand(0,100), rand(0,100), rand(0,100));//随机的弧线颜色
+			$color_zifu=imagecolorallocate($img, rand(10,90), rand(10,90), rand(10,90)); //随机的字符串颜色
+			imagefill($img, 0, 0, $color_bg);
+			for ($i=0;$i<100;$i++){
+			imagesetpixel($img, rand(0,$width-1), rand(0,$height-1), $color_di); //画一个单一的像素点，for循环控制点的数量
+			}
+			for($b=0;$b<3;$b++){
+			imagearc($img, rand(0,$width/2), rand(0,$height), $width, $height, rand(0,$width/2), rand($width/2,$width), $color_huxi); //画弧线 for循环控制弧线数量
+			}
+			//imagestring($img, 5, 50,10,'abcd', $color_zifu);
+			imagefttext($img, 14, 10, rand(20,40), rand(25,35), $color_zifu, 'font/OctemberScript.ttf', $string); //调用 FreeType 2 文本来绘制字符串
+			imagejpeg($img); //输出图像到浏览器或文件
+		?>
+			
+			/*
+			    图片添加水印
+			*/
+			header('Content-type:image/jpeg');
+			$img=imagecreatefromjpeg('image/crz1.jpg'); //可传输本地图片地址或者URL地址
+			$img_src=imagecreatefrompng('image/logo.png');
+			$color_font=imagecolorallocate($img, 255,255,255);
+			$widsss=imagesx($img); //图像的长度
+			$hieht=imagesy($img); //图像的高度
+			$water_width=imagesx($img_src);
+			$water_herght=imagesy($img_src);
+			$post=imagettfbbox(50, 0,  'font/OctemberScript.ttf', '1024eds.com'); //列出字符串的四个角的坐标
+			$whide=$post[2]-$post[0]; //用右下角的x轴的值减去左下角的x轴得出这个字符串的长度
+			imagefttext($img, 50, 0, $widsss-1-$whide, $hieht-2, $color_font, 'font/OctemberScript.ttf', '1024eds.com'); //制作文字水印
+			/*
+			  imagecopy($img, $img_src, 100,100, 0, 0, $water_width, $water_herght);//把一张图片拷贝到一张图片上 图片水印
+			  $img：目标图像资源
+			  $img_src：水印图像资源
+			  100：所要拷贝到目标图像资源上的坐标（X轴位置）
+			  100：所要拷贝到目标图像资源上的坐标（Y轴位置）
+			  0：从水印图像资源的X坐标为0的位置开始拷贝
+			  0：从水印图像资源的Y坐标为0的位置开始拷贝
+			  $water_width：所要拷贝的水印图像的长度
+			  $water_herght：所要拷贝的水印图像的高度
+			 */
+			imagecopymerge($img, $img_src, 100,100, 0, 0, $water_width, $water_herght,10);//把一张图片拷贝到一张图片上 图片水印(能调节水印透明度)
+			imagejpeg($img);
+			imagedestroy($img);
+
+			
+/////////////////////////////////////////////////////////文件与目录的基本操作//////////////////////////////////////////////////////////////////////////////////			
+		/*
+		 * is_file()判断是否是一个文件
+		 * is_dir() 判断是否是一个目录
+		 * file_exists()判断文件或目录是否存在
+		 * filesize()判断取得普通文件的大小(字节)
+		 * is_readable()判断指定文件名是否可读
+		 * is_writable()判断指定文件名是否可写
+		 * filectime()获取文件的创建时间
+		 * filemtime()获取文件的修改时间
+		 * stat()获取文件大部分属性值
+		*/	
+		
+		    var_dump(is_file('index.php'));
+			var_dump(is_dir('inde.php'));
+			var_dump(file_exists('../demo7_1'));
+			var_dump(filesize('../demo7_1/index.php'));
+			var_dump(is_readable('index.php'));
+			var_dump(is_writable('index.php'));
+			echo date('Y-m-d G:i:s',filectime('index.php')).'<br />';
+			echo date('Y-m-d G:i:s',filemtime('index.php')).'<br />';
+			var_dump(stat('index.php'));
+				
+		
+		/*
+		 * basename()返回路径中的文件名部分
+		 * dirname()返回路径中的目录部分
+		 * pathinfo()返回文件路径的信息
+		 * opendir()打开目录句柄
+		 * readdir()从目录句柄中读取条目
+		 * rewinddir()返回目录句柄
+		 * closedir()关闭目录句柄
+		 * mkdir()新建目录
+		 * rmdir()删除指定空目录
+		 *scandir()列出指定路径中的文件和目录
+		 */
+			
+			    echo basename(__FILE__).'<br />';
+				echo dirname(__FILE__).'<br />';
+				var_dump(pathinfo(__FILE__));
+				$dir=opendir('../demo11');
+
+			   /* for($i=0;$i<6;$i++){
+					if ($i>=3){
+						rewinddir($dir);
+					}
+				var_dump(readdir($dir));
+				
+				} */
+				
+					/* 这是正确地遍历目录方法 */
+					while (false !== ($file = readdir($dir))) {
+						//echo "$file\n"; 
+						var_dump($file);
+					}
+				   var_dump(scandir('../demo11'));
+					
+					var_dump(mkdir('img'));
+				   
+				   
+		    /*
+			 * fopen()打开文件或者URL
+			 * fread()读取文件
+			 * fgets()从文件指针中读取一行
+			 * feof()测试文件指针是否到了文件结束位置
+			 * fwrite()写入文件（可安全用于二进制文件）
+			 * fseek()在文件指针中定位
+			 * rewind()倒回文件指针位置
+			 * flock()轻便的咨询文件锁定
+			 * ftruncate()将文件截断到给定的长度
+			 * fclose()关闭一个已打开的文件指针
+			 * file()把整个文件读入一个数组中
+			 * copy()拷贝文件
+			 * unlink()删除文件
+			 * file_get_contents()将整个文件读入一个字符串
+			 * file_put_contents()将字符串写入文件中
+			 * rename() 重命名一个文件或目录
+			 * eadfile()读入一个文件并写入到输出缓冲
+			 */
+				 
+				$file=fopen('test.txt', 'r');
+				//var_dump(fread($file, 6));
+				//var_dump(fgets($file));
+				//var_dump(feof($file));
+				if ($file) {
+					while (($file2=fgets($file))!= false){
+						var_dump($file2);
+				   }
+					var_dump(feof($file));
+				}  
+				 
+				$file=fopen('test.txt', 'a+');
+				if (flock($file, LOCK_EX+LOCK_NB)){ //LOCK_NB意思是不希望在堵塞在加锁 直接放弃返回false
+						var_dump(fwrite($file, '末尾'));
+						flock($file, LOCK_UN);
+						}else {
+							echo '上锁失败';
+            }
+
+			
+				//var_dump(file_get_contents('test.txt'));
+				file_put_contents('test.txt',  file_get_contents('http://www.baidu.com'));
+			
+			
+			
+			
+			
+?>
+

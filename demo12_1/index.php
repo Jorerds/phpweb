@@ -1,0 +1,11 @@
+<?php
+    /*
+      session_start()启动新会话或者重用现有会话
+      session_unset()释放所有的会话变量
+      session_name()读取/设置会话名称
+     */
+    session_start();
+    $_SESSION['name']='特朗普';
+    $_SESSION['emal']='41554815@qq.com';
+    $_SESSION['id']='32165484415';
+?>

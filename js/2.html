@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        /*
+        * 一个点击变色事件，由于写在head里，因为是在页面加载的时候获取元素，这样这个事件会出错，所以要用
+        * window.onload 来声明脚本是页面加载之后
+        */
+        window.onload=function () {
+            document.getElementById('btn').onclick=function () {
+                document.getElementById('btn').style.background='#ff3b62';
+            }
+        }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<!-- window.onload   意思是页面加载-->
+<!--
+window.onload=function(){
+    //当页面加载完成后再执行JS脚本事件
+}
+-->
+<input  type="button" id="btn" value="按钮"/>
+
+</body>
+</html>

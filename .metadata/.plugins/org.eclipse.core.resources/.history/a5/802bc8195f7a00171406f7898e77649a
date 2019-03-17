@@ -1,0 +1,15 @@
+<?php 
+    header('Content-type:text/html;charset=utf-8');
+        session_start();
+        session_unset();
+        session_destroy();
+            if (isset($_SESSION['usrname']) && $_SESSION['usrname']==='laowang'){
+                if(setcookie(session_name(),$_POST['usrname'],time()-3600)){
+                    header('Location:skip.php?url=index.php&info=退出成功！');
+              
+            }else {
+                header('Location:skip.php?url=index.php&info=注销失败！');
+            }
+        
+        }
+?>

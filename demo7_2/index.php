@@ -1,0 +1,10 @@
+<?php
+/*
+元字符：*
+	匹配0次、或1次、或多次其前面的字符
+	放在*前面的那个字符可以出现0次，也可以出现1次，也可以出现多次
+*/
+$pattern='/te*s*t/';
+$str='abcteeeeeeeeeeeeeesssssssssssssssst';
+var_dump(preg_match_all($pattern,$str,$arr));
+var_dump($arr);

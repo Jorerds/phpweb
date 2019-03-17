@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>仿支付宝注册表单效果-www.mb5u.com</title>
+    <meta http-equiv="mrc-type" mrc="text/html;charset=gb2312">
+    <style type="text/css">
+        body {
+            font-family: "Arial", "Helvetica", "sans-serif" ;
+            font-size: 11.5px;
+        }
+        div {
+            display: block;
+            padding: 5px 0;
+            text-align: left;
+            margin: 5px 10px;
+            width: 700px;
+        }
+        input {
+            padding: 2px 8px 0px 3px;
+            border-top-width: 1px;
+            border-left-width: 1px;
+            border-right-width: 1px solid #ccc;
+            border-bottom-width: 1px solid #ccc;
+            margin-right: 5px;
+        }
+        .txtarea{
+            font-size: 11.5px;
+            width: 500px;
+            height: 300px;
+            display: none;
+            margin-left: 160px;
+            border-top-width: 1px;
+            border-left-width: 1px;
+            border-right-width: 1px solid #ccc;
+            border-bottom-width: 1px solid #ccc;
+            overflow: auto;
+        }
+        label {
+            float: left;
+            text-align: right;
+            display:block;
+            width:150px;
+            padding: 2px 8px 0px 3px;
+        }
+        .reg{
+            font-size: 11.5px;
+            font-weight: bold;
+            border-bottom: 1px solid #CCCCEE;
+            padding-bottom: 5px;
+            width: 700px;
+            margin: 10px;
+        }
+        .divstyle
+        {
+            border: 1px solid #CCCCEE;
+            background-color: #EEEEFF;
+            display: block;
+            padding: 5px 0;
+            text-align: left;
+            margin: 5px 10px;
+            width: 700px;
+        }
+        .subBtn{
+            border: 1px solid #ccc;
+            color: #333;
+            background-color: #EEEEFF;
+            text-align: center;
+        }
+        .eName{
+            color: #000;
+            background: #e2f5ff url(/jscss/demoimg/200905/alipay_ok.gif) no-repeat 5px 3px;
+            padding: 3px 3px 3px 25px;
+            border: 1px solid #00A8FF;
+        }
+        .wName{
+            color: #000;
+            background: #FFF2E9 url(/jscss/demoimg/200905/alipay_no.gif) no-repeat 5px 3px;
+            padding: 3px 3px 3px 25px;
+            border: 1px solid #FF6600;
+        }
+        .rName {
+            color: #000;
+            background: transparent url(/jscss/demoimg/200905/alipay_yes.gif) no-repeat 0px 0px;
+            padding: 3px 3px 3px 25px;
+        }
+        .txtR{
+            background: #FFFFFF url(/jscss/demoimg/200905/alipay_input_ok_corner.gif) no-repeat scroll right top;
+            border-top-width: 1px;
+            border-left-width: 1px;
+            border-right-width: 1px solid #ccc;
+            border-bottom-width: 1px solid #ccc;
+            padding: 2px 3px 0px 3px;
+        }
+        .txtW{
+            background: #FFFFFF url(/jscss/demoimg/200905/alipay_input_warning_corner.gif) no-repeat scroll right bottom;
+            border-top-width: 1px;
+            border-left-width: 1px;
+            border-right-width: 1px solid #ccc;
+            border-bottom-width: 1px solid #ccc;
+            padding: 2px 3px 0px 3px;
+        }
+        .txtE{
+            background: #FFFFFF url(/jscss/demoimg/200905/alipay_input_error_corner.gif) no-repeat scroll right bottom;
+            border-top-width: 1px;
+            border-left-width: 1px;
+            border-right-width: 1px solid #ccc;
+            border-bottom-width: 1px solid #ccc;
+            padding: 2px 3px 0px 3px;
+        }
+    </style>
+    <script type="text/javascript" language="javascript" >
+        function $(id){return document.getElementById(id);}
+        function $F(id){return document.getElementById(id).value;}
+        function $N(name){return document.getElementsByTagName(name)}
+        function isName(s)
+        {
+            var patrn=/^(\w){6,16}$/;
+            if (!patrn.exec(s)) {return false;}
+            return true;
+        }
+        function checkName()
+        {
+            if($F('name')=="")
+            {
+                with($('nameMsg'))
+                {
+                    innerHTML="Please enter this";
+                    className="eName";
+                }
+                $('name').className='txtW';
+                $('name').parentNode.className="divstyle";
+            }
+            else	if($F('name')!=="" &&!isName($F('name')))
+            {
+                with($('nameMsg'))
+                {
+                    innerHTML="Enter between 6 and 16 characters (A-Z, a-z, 0-9,_ ,).";
+                    className="wName";
+
+                }
+                //$('name').focus();
+                $('name').className='txtE';
+                $('name').parentNode.className="divstyle";
+                return false;
+            }
+            else
+            {
+                with($('nameMsg'))
+                {
+                    innerHTML=" ";
+                    className="rName";
+                }
+                $('name').className='txtR';
+                $('name').parentNode.className="";
+                return true;
+            }
+        }
+        function ispwd(s)
+        {
+            var patrn=/^(\w){5,20}$/;
+            if (!patrn.exec(s)) {return false;}
+            return true;
+        }
+        function checkPwd()
+        {
+            if($F('pwd')=="")
+            {
+                with($('pwdMsg'))
+                {
+                    innerHTML="Please enter this";
+                    className="eName";
+                }
+                $('pwd').className='txtW';
+                $('pwd').parentNode.className="divstyle";
+            }
+            else	if($F('pwd')!=="" &&!ispwd($F('pwd')))
+            {
+                with($('pwdMsg'))
+                {
+                    innerHTML="Enter between 6 and 16 characters (A-Z, a-z, 0-9,_ ,).";
+                    className="wName";
+                }
+                //$('pwd').focus();
+                $('pwd').className='txtE';
+                $('pwd').parentNode.className="divstyle";
+                return false;
+            }
+            else
+            {
+                with($('pwdMsg'))
+                {
+                    innerHTML=" ";
+                    className="rName";
+                }
+                $('pwd').className='txtR';
+                $('pwd').parentNode.className="";
+                return true;
+            }
+        }
+        function checkPwd2()
+        {
+            if($F('pwd2')=="")
+            {
+                with($('pwdMsg2'))
+                {
+                    innerHTML="Please enter this";
+                    className="eName";
+                }
+                $('pwd2').className='txtW';
+                $('pwd2').parentNode.className="divstyle";
+            }
+            else	if($F('pwd2')!=="" &&!isName($F('pwd2')))
+            {
+                with($('pwdMsg2'))
+                {
+                    innerHTML="Enter between 6 and 16 characters (A-Z, a-z, 0-9,_ ,).";
+                    className="wName";
+                }
+                //$('pwd2').focus();
+                $('pwd2').className='txtE';
+                $('pwd2').parentNode.className="divstyle";
+                return false;
+
+            } else if($F('pwd2')==$F('pwd'))
+            {
+                with($('pwdMsg2'))
+                {
+                    innerHTML=" ";
+                    className="rName";
+                }
+                $('pwd2').className='txtR';
+                $('pwd2').parentNode.className="";
+                return true;
+            }
+            else
+            {
+                with($('pwdMsg2'))
+                {
+                    innerHTML="Please confirm the pasword";
+                    className="eName";
+                }
+                //$('pwd2').focus();
+                $('pwd2').className='txtE';
+                $('pwd2').parentNode.className="divstyle";
+                return false;
+            }
+        }
+        function inputLoadOk()
+        {
+            var elm = $N('input');
+            for( i=0; i<elm.length;i++)
+            {
+                if(elm[i].type != "button" && elm[i].type != "submit" && elm[i].type != "reset"&&elm[i].type!="checkbox")
+                {
+                    elm[i].className="txtW";
+                    //elm[i].nextSibling.innerHTML="txtW";
+                    //alert(elm[i].nextSibling.innerHTML)
+                }
+            }
+        }
+        function infoClick()
+        {
+            if($('info').checked)
+            {
+                $('btnSub').disabled   =   false;
+                $('txtinfo').style.display='block';
+                //$('info').className='txtE';
+                $('info').parentNode.className="divstyle";
+                return true;
+            }
+            else
+                $('btnSub').disabled   =   true;
+            $('txtinfo').style.display='none'
+            $('info').parentNode.className="";
+            return false;
+        }
+        function checkForm()
+        {
+            if(checkName()&&checkPwd()&&checkPwd2()&&infoClick())
+            {
+                alert("go to method");
+            }
+        }
+    </script>
+</head>
+<body onload="inputLoadOk()">
+<form>
+    <h2 class="reg">加入：</h2>
+    <div>
+        <label for="name">用户名</label>
+        <input type="text" id="name" value="" maxlength="16" onblur="checkName()"/><span id="nameMsg"></span>
+    </div>
+    <div>
+        <label for="pwd">密码</label>
+        <input type="password" id="pwd" value="" maxlength="16" onblur="checkPwd()"/><span id="pwdMsg"></span>
+    </div>
+    <div>
+        <label for="pwd2">确认密码</label>
+        <input type="password" id="pwd2" value="" maxlength="16" onblur="checkPwd2()"/><span id="pwdMsg2"></span>
+    </div>
+    <div>
+        <label> </label>
+        <input type="checkbox" id="info" name="info" value="" onclick="infoClick()"/><span>我已阅读了协议<span>
+	<span id="txtinfo" class="txtarea" style="padding-top:5px">这里是用户注册协议的内容，请自行添加！</span>
+        <!--<label>&nbsp;</label>
+        <textarea id="txtinfo" class="txtarea">用户注册协议</textarea>-->
+    </div>
+    <div>
+        <label> </label>
+        <input type="button" class="subBtn" id="btnSub" disabled  value="开始检测并登记" onclick="checkForm()">
+    </div>
+</form>
+</body>
+</html>

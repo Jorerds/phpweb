@@ -1,0 +1,110 @@
+{extend name="public/base" /}
+{block name="header"}{/block}
+{block name="footer"}{/block}
+{block name="menu"}{/block}
+{block name="seo"}
+<title>{$title|default="标题"}</title>
+<meta name="keywords" content="{$keywords|default='关键字'}">
+<meta name="description" content="{$description|default='描述'}">
+{/block}
+
+{block name="link"}
+<link rel="shortcut icon" href="favicon.ico"> <link href="__STATIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+<link href="__STATIC__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+<!-- Data Tables -->
+<link href="__STATIC__/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+<link href="__STATIC__/css/animate.min.css" rel="stylesheet">
+<link href="__STATIC__/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+{/block}
+
+{block name="content"}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>本月寄件记录</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="table_data_tables.html#">选项1</a>
+                            </li>
+                            <li><a href="table_data_tables.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>快递类别</th>
+                            <th>快递单号</th>
+                            <th>姓名(寄)</th>
+                            <th>电话(寄)</th>
+                            <th>地址(收)</th>
+                            <th>学校</th>
+                            <th>实收运费</th>
+                            <th>寄件物品</th>
+                            <th>重量(kg)</th>
+                            <th>经办人</th>
+                            <th>寄件日期</th>
+                            <th>备注说明</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {volist name='listExpress' id='vo'}
+                        <tr class="gradeA">
+                            <td class="center">{$vo.id}</td>
+                            <td>{$vo.Type}</td>
+                            <td>{$vo.OrderNo}</td>
+                            <td>{$vo.J_Name}</td>
+                            <td>{$vo.J_Tel}</td>
+                            <td class="center">{$vo.S_Address}</td>
+                            <td >{$vo.School}</td>
+                            <td >{$vo.Freight}</td>
+                            <td>{$vo.SendGoods}</td>
+                            <td>{$vo.Weight}</td>
+                            <td>{$vo.People}</td>
+                            <td>{$vo.Date}</td>
+                            <td>{$vo.BeiZhu}</td>
+                        </tr>
+                        {/volist}
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{/block}
+
+{block name="js"}
+<script src="__STATIC__/js/jquery.min.js?v=2.1.4"></script>
+<script src="__STATIC__/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__STATIC__/js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="__STATIC__/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="__STATIC__/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="__STATIC__/js/content.min.js?v=1.0.0"></script>
+<script>
+    $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+</script>
+<script type="text/javascript" src=" " charset="UTF-8"></script>
+{/block}

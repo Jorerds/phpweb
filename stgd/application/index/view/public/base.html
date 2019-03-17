@@ -1,0 +1,42 @@
+<!--公共父模板-->
+
+<!--引入模板-->
+{block name="meta"}
+{include file="public/meta" /}
+{/block}
+<!--创建seo区块-->
+{block name="seo"}
+{/block}
+{block name="link"}
+{/block}
+</head>
+
+
+
+<!--左侧导航-->
+{block name="header"}
+{include file="public/header" /}
+{/block}
+
+<!--右侧边-->
+{block name="menu"}
+{include file="public/menu" /}
+{/block}
+
+<!--主体内容区块-->
+{block name="content"}
+页面主体内容
+{/block}
+
+{block name="footer"}
+{include file="public/footer" /}
+{/block}
+</div>
+
+{block name="js"}
+
+{/block}
+
+</body>
+
+</html>

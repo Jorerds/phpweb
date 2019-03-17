@@ -1,0 +1,35 @@
+<!--公共父模板-->
+
+<!--引入模板-->
+{include file="public/meta" /}
+
+<!--创建seo区块-->
+{block name="seo"}
+此次是网站名与描述(子模板应用时会自动消除这段话)
+{/block}
+
+<!--引入模板-->
+{block name="header"}
+{include file="public/header" /}
+{/block}
+
+<!--引入模板-->
+{block name="menu"}
+{include file="public/menu" /}
+{/block}
+
+<!--创建页面主体区块-->
+{block name="content"}
+页面主体内容
+{/block}
+
+<!--引入模板-->
+{include file="public/footer" /}
+
+<!--js脚步区块-->
+{block name="js"}
+
+{/block}
+
+</body>
+</html>
