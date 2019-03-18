@@ -24,7 +24,7 @@ class News
     public function maopao($list)
     {
         /*
-         * 冒泡排序
+         *  冒泡排序
          */
         for ($i=0;$i<count($list);$i++){
             for ($j=0;$j<count($list)-$i-1;$j++){
