@@ -20,7 +20,7 @@ $head=array(
     <div class="title">热门动态</div>
     <ul class="newlist">
         <!-- 20条 -->
-        <li><a href="#">[库队]</a> <a href="#">私房库实战项目录制中...</a></li>
+        <li><a href="#">[库队]</a> <a href="#">测试库</a></li>
 
     </ul>
     <div style="clear:both;"></div>
